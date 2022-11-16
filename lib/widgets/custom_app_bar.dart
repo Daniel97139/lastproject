@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
   final IconData leftIcon;
   final IconData rightIcon;
-  final IconData? leftCallback;
+  final Function? leftCallback;
   const CustomAppBar(this.leftIcon, this.rightIcon,
-      {super.key, this.leftCallback});
+      {this.leftCallback});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,12 +19,12 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: leftCallback != null ? () => leftCallback! : null,
+            onTap: leftCallback != null ? () => leftCallback!() : null,
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0x000000e1),
+                color: Colors.white,
               ),
               child: Icon(leftIcon),
             ),
@@ -32,7 +33,7 @@ class CustomAppBar extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0x000000ff),
+              color: Colors.white,
             ),
             child: Icon(rightIcon),
           ),
